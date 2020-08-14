@@ -29,10 +29,14 @@ int main() {
             putchar('\n');
         };
 
-        if (depth > 0)
-            for (int i = 0; i < depth; ++i) PrintRow(depth, i);
-        else
-            for (int i = -depth - 1; i >= 0; --i) PrintRow(-depth, i);
+        if (depth > 0) {
+            for (int i = 0; i < depth; ++i)
+                PrintRow(depth, i);
+        }
+        else {
+            for (int i = -depth - 1; i >= 0; --i)
+                PrintRow(-depth, i);
+        }
     }
 
     return 0;
