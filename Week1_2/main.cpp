@@ -11,6 +11,7 @@ int _abs(int x) {
 int main() {
     int depth;
 
+    printf("Input the pyramid's height: ");
     scanf("%d", &depth);
     if (depth == 0) {
         printf("That's a very flat pyramid.\n");

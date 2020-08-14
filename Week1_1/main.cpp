@@ -7,6 +7,7 @@ using namespace std;
 int main() {
     char name[512];
 
+    printf("Your name? ");
     scanf("%511[^\n]", name);
     printf("Hello, %s.\nYou might be wondering why this program is so simple. "
         "I have no bloody idea.", name);
