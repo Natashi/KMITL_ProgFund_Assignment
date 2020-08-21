@@ -4,6 +4,21 @@
 
 using namespace std;
 
+bool _isdigit(char x) {
+    return x >= '0' && x <= '9';
+}
+bool _isalpha(char x) {
+    return (x >= 'A' && x <= 'Z') || (x >= 'a' && x <= 'z');
+}
+char _toupper_(char x) {
+    if (!_isalpha(x)) return x;
+    return x > 'Z' ? (x - ('a' - 'A')) : x;
+}
+char _isvowel(char x) {
+    x = _toupper_(x);
+    return x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U';
+}
+
 int main() {
     char str[512];
 
@@ -16,12 +31,11 @@ int main() {
         char* pStr = &str[0];
         while (*pStr) {
             char ch = *pStr;
-            if (ch >= '0' && ch <= '9')
+            if (_isdigit(ch))
                 ++countNumeric;
             else {
-                if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')) {
-                    if (ch > 'Z') ch -= 'a' - 'A';
-                    if (ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U')
+                if (_isalpha(ch)) {
+                    if (_isvowel(ch))
                         ++countVowel;
                     else
                         ++countConsonant;

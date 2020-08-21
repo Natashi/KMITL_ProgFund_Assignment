@@ -4,6 +4,17 @@
 
 using namespace std;
 
+void ReverseBytes(char* sPtr, char* ePtr) {
+    while (sPtr < ePtr) {
+        char tmp = *ePtr;
+        *ePtr = *sPtr;
+        *sPtr = tmp;
+
+        ++sPtr;
+        --ePtr;
+    }
+}
+
 int main() {
     char str[512];
 
@@ -14,14 +25,7 @@ int main() {
         while (*ePtr) ++ePtr;
 
         --ePtr;
-        while (sPtr < ePtr) {
-            char tmp = *ePtr;
-            *ePtr = *sPtr;
-            *sPtr = tmp;
-
-            ++sPtr;
-            --ePtr;
-        }
+        ReverseBytes(sPtr, ePtr);
 
         printf("The reversed string is: %s", str);
     }
