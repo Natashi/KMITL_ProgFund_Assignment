@@ -9,7 +9,7 @@ int main() {
 
     printf("I'll multiply your number by 10, I guess.\n");
     printf("Input number: ");
-    if (scanf("%511d", &n)) {
+    if (scanf("%d", &n)) {
         printf("Your new number is: %d", n * 10);
     }
     else
