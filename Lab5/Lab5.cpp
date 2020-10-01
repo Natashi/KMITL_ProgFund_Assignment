@@ -75,9 +75,9 @@ public:
 	virtual void Draw() {
 		Console::GotoXY(px_, py_);
 		puts("     ");
-		Console::GotoXY(roundf(x_), roundf(y_));
-		puts("<-0->");
 		Drawable::Draw();
+		Console::GotoXY(px_, py_);
+		puts("<-0->");
 	}
 };
 class ShotObj : public Drawable {
@@ -91,17 +91,15 @@ public:
 
 	virtual void Update(float dx, float dy) {
 		Drawable::Update(vx_, vy_);
-		x_ = max(x_, BOUND_L + 1);
-		x_ = min(x_, BOUND_R - 2);
 		y_ = max(y_, BOUND_T + 1);
 		y_ = min(y_, BOUND_B - 2);
 	}
 	virtual void Draw() {
 		Console::GotoXY(px_, py_);
 		puts(" ");
-		Console::GotoXY(roundf(x_), roundf(y_));
-		puts(".");
 		Drawable::Draw();
+		Console::GotoXY(px_, py_);
+		puts(".");
 	}
 
 	void SetSpeed(float x, float y) {
@@ -109,7 +107,8 @@ public:
 		vy_ = y;
 	}
 	bool IsDelete() {
-		return y_ <= BOUND_T + 1;
+		return x_ <= BOUND_L + 1 || x_ >= BOUND_R - 2 
+			|| y_ <= BOUND_T + 1;
 	}
 private:
 	float vx_;
@@ -182,11 +181,11 @@ int main() {
 			bool bDown = mapState[4];	//s
 			bool bRight = mapState[5];	//d
 			objShip->Update(bLeft ? -2 : (bRight ? 2 : 0),
-				bUp ? -1 : (bDown ? 1 : 0));
+				bUp ? -1 : (bDown ? 1 : 0));	//As a character in the console is 2x higher than it is wide
 		}
 		if (mapState[1] && frame % 20 == 0) {
 			ShotObj* newShot = new ShotObj(objShip->GetX() + 2, objShip->GetY());
-			newShot->SetSpeed(GetRand(-0.15f, 0.15f), -GetRand(0.8f, 1.1f));
+			newShot->SetSpeed(GetRand(-0.15f, 0.15f), -GetRand(0.8f, 1.1f));	//Spice your life up with rand()
 			if (listShot.size() < MAX_SHOT)
 				listShot.push_back(newShot);
 		}
