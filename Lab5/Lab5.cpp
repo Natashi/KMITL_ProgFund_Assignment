@@ -150,7 +150,7 @@ int main() {
 	Console::SetCursor(20, false);
 
 	bool mapState[6];
-	memset(mapState, 0x00, sizeof(bool) * 5);
+	memset(mapState, 0x00, sizeof(bool) * 6);
 
 	ShipObj* objShip = new ShipObj(36, 15);
 	std::list<ShotObj*> listShot;
