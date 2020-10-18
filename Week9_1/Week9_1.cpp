@@ -50,12 +50,12 @@ struct linked_list_int {
 int main() {
 	linked_list_int list;
 
-	size_t count = 0;
+	int count = 0;
 	printf("Input the amount of numbers: ");
-	if (scanf("%u", &count) && count > 0) {
-		printf("Input %u number(s):\n", count);
+	if (scanf("%d", &count) && count > 0) {
+		printf("Input %d number(s):\n", count);
 		{
-			size_t iCount = 0;
+			int iCount = 0;
 			while (iCount < count) {
 				int tmp;
 				if (scanf("%d", &tmp)) {
