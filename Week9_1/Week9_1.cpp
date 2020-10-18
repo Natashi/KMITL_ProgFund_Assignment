@@ -52,7 +52,7 @@ int main() {
 
 	size_t count = 0;
 	printf("Input the amount of numbers: ");
-	if (scanf("%u", &count)) {
+	if (scanf("%u", &count) && count > 0) {
 		printf("Input %u number(s):\n", count);
 		{
 			size_t iCount = 0;
